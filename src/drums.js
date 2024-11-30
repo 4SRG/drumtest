@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 const Drums = (props) => {
-    function handle() {
+    const handle = useCallback(() => {
         if (props.on) {
             const aud = document.getElementById(`${props.keyTrigger}`);
             const display = document.getElementById(`display`);
@@ -30,7 +30,7 @@ const Drums = (props) => {
         } else {
             return;
         }
-    }
+    }, [props.on, props.keyTrigger, props.description]);
 
     useEffect(() => {
         const handleKey = (event) => {
@@ -46,7 +46,7 @@ const Drums = (props) => {
         return () => {
             window.removeEventListener("keydown", handleKey);
         };
-    }, [props.keyTrigger, props.on]);
+    }, [props.keyTrigger, handle]);
 
     return (
         <div
