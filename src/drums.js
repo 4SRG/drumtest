@@ -42,7 +42,7 @@ const Drums = (props) => {
             window.removeEventListener("keydown", handleKey)
         }
     
-    }, [props.keyTrigger && props.on])
+    }, [props.keyTrigger, props.on])
 
 
 
